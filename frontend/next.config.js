@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
+
+const isProd = process.env.NODE_ENV === 'production';
+
+
 const nextConfig = {
+  output: 'standalone',
+  basePath: isProd ? '/1882-cost-tracking' : '', //you would remove this if you are not using a revers proxy - see your notes
+  trailingSlash: true,
   async rewrites() {
     return [
       {
